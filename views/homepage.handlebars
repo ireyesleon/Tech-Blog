@@ -1,0 +1,14 @@
+<div class="row mt-4">
+{{#if post.length}}
+  <div class="col-md-6 post-list">
+    {{#each posts as |post|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/post/{{post.id}}">{{post.title}}{{post.username}}{{post.creation_date}}</a></h4>
+        <h3><a href="/post/{{post.id}}">{{post.content}}</a></h3>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+  </div>

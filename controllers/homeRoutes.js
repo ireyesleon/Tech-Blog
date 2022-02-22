@@ -1,6 +1,4 @@
 const router = require('express').Router();
-const { truncate } = require('lodash');
-const { userInfo } = require('os');
 const { Post, User } = require('../models');
 const withAuth = require('../utils/auth');
 

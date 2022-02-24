@@ -1,14 +1,10 @@
-<div class="row mt-4">
-{{#if post.length}}
-  <div class="col-md-6 post-list">
-    {{#each posts as |post|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{post.title}}{{post.username}}{{post.creation_date}}</a></h4>
-        <h3><a href="/post/{{post.id}}">{{post.content}}</a></h3>
+{{#each posts as |post|}}
+  <div class="row">
+    <div class="col-12 border rounded-3 border-5 p-0 border-dark m-2">
+      <div class="d-flex justify-content-between title p-2">
+        <h4 class="post-title"><a href="/post/{{post.id}}">{{post.title}}</a></h4><h6 class="author">Posted by: {{post.user.username}} on {{format_date post.creation_date}}</h6>
+        </div>
+        <h3 class="content p-2">{{post.content}}</h3>
       </div>
     </div>
-    {{/each}}
-  </div>
-  {{/if}}
-  </div>
+{{/each}}

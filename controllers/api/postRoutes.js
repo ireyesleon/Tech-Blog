@@ -1,11 +1,10 @@
 const router = require('express').Router();
-const { post } = require('../../../01-Activities/28-Stu_Mini-Project/Main/controllers/api/projectRoutes');
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
 // Route to create new post
-router.post('/', withAuth, async (req, req) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const newPost = await Post.create({
             ...req.body,

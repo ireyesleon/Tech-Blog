@@ -1,27 +1,27 @@
 <div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
+  <div class="col-12">
+    <h2>Welcome {{username}}!</h2>
   </div>
 </div>
 
-<div class="row mt-4">
-{{#if post.length}}
-  <div class="col-md-6 post-list">
-    <h3>Your posts:</h3>
-
+<div class="row">
+{{#if posts.length}}
+  <div class="col-12 post-list">
+    <h3>This are your posts:</h3>
     {{#each posts as |post|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{post.title}}{{post.creation_date}}</a></h4>
-      </div>
+    <div class="row">
+      <div class="col-12 border rounded-3 border-5 p-0 border-dark m-2">
+      <div class="d-flex justify-content-between title p-2">
+        <h4 class="post-title"><a href="/post/{{post.id}}">{{post.title}}</a></h4><h6 class="author"> Posted on {{format_date post.creation_date}}</h6>
+        </div>
+        </div>
     </div>
     {{/each}}
   </div>
   {{/if}}
-
+  </div>
   <div class="col-md-6">
         <a href="/newPost">+ New Post</a>
-  </div>
   </div>
 
   <script src="/js/dashboard.js"></script>

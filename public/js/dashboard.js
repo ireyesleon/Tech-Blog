@@ -6,7 +6,7 @@ const newFormHandler = async (event) => {
     const content = document.querySelector('#post-content').value.trim();
 
     if (title && content) {
-        const response = await fetch(`/api/post`, {
+        const response = await fetch(`/api/posts`, {
             method: 'POST',
             body: JSON.stringify({ title, content }),
             headers: {
@@ -88,7 +88,7 @@ const newCommentHandler = async (event) => {
     }
 };
 
-// document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
 // document.querySelector('#delete-post').addEventListener('click', delButtonHandler);
 // document.querySelector('.edit-post-form').addEventListener('submit', updatePostHandler);
-document.querySelector('.comment-form').addEventListener('submit', newCommentHandler);
+// document.querySelector('.comment-form').addEventListener('submit', newCommentHandler);

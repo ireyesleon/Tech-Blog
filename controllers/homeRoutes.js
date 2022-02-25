@@ -83,4 +83,14 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
+// Route for logout
+router.get('/logout', (req, res) => {
+    res.render('/')
+});
+
+// Route for new post
+router.get('/newPost', (req, res) => {
+    res.render('newPost')
+});
+
 module.exports = router;

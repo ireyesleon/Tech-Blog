@@ -91,7 +91,7 @@ const newCommentHandler = async (event) => {
     }
 };
 
-// document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
 document.querySelector('#delete-button').addEventListener('click', delButtonHandler);
 document.querySelector('.update-post-form').addEventListener('submit', updatePostHandler);
 // document.querySelector('.comment-form').addEventListener('submit', newCommentHandler);

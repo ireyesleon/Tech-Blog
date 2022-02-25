@@ -6,7 +6,7 @@ const newFormHandler = async (event) => {
     const content = document.querySelector('#post-content').value.trim();
 
     if (title && content) {
-        const response = await fetch(`/api/posts`, {
+        const response = await fetch(`/api/post`, {
             method: 'POST',
             body: JSON.stringify({ title, content }),
             headers: {
@@ -30,7 +30,7 @@ const updatePostHandler = async (event) => {
     const content = document.querySelector('#post-content').value.trim();
 
     if (title && content) {
-        const response = await fetch(`/api/posts/${id}`, {
+        const response = await fetch(`/api/post/${id}`, {
             method: 'PUT',
             body: JSON.stringify({ title, content }),
             headers: {
@@ -52,7 +52,7 @@ const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
 
-        const response = await fetch(`/api/posts/${id}`, {
+        const response = await fetch(`/api/post/${id}`, {
             method: 'DELETE',
         });
 
@@ -64,7 +64,31 @@ const delButtonHandler = async (event) => {
     }
 };
 
-document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
-document.querySelector('#delete-post').addEventListener('click', delButtonHandler);
-// Pending to add update post, check in tutoring
-document.querySelector('.edit-post-form').addEventListener('submit', updatePostHandler);
+// Function to add a comment to a Post
+const newCommentHandler = async (event) => {
+    event.preventDefault();
+
+    const comment = document.querySelector('#add-comment').value.trim();
+    console.log(comment)
+    
+    if (comment) {
+        const response = await fetch(`/post/:id`, {
+            method: 'POST',
+            body: JSON.stringify({ comment }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.ok) {
+            document.location.replace('/dashboard');
+        } else {
+            alert('Failed to create new post');
+        }
+    }
+};
+
+// document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+// document.querySelector('#delete-post').addEventListener('click', delButtonHandler);
+// document.querySelector('.edit-post-form').addEventListener('submit', updatePostHandler);
+document.querySelector('.comment-form').addEventListener('submit', newCommentHandler);

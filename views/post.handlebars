@@ -1,22 +1,18 @@
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Edit post:</h3>
-
-    <form class="form edit-post-form">
-      <div class="form-group">
-        <label for="post-title">Title:</label>
-        <input class="form-input" type="text" id="post-title" name="post-title" />
+<div class="col-12 border rounded-3 border-5 p-0 border-dark m-2">
+      <div class="d-flex justify-content-between title p-2">
+        <h4 class="post-title"><a href="/post/{{id}}">{{title}}</a></h4><h6 class="author">Posted by: {{user.username}} on {{format_date creation_date}}</h6>
+        </div>
+        <h3 class="content p-2">{{content}}</h3>
+    </div>
+<div class="col-12 border rounded-3 border-5 p-0 border-dark m-2">
+<form class="form comment-form">
+      <div class="form-group m-2">
+        <label class="col-12" for="add-comment">Add a comment:</label>
+        <input class="form-input col-12" type="text" id="add-comment" value="{{post.id}}"/>
       </div>
       <div class="form-group">
-        <label for="post-content">Content:</label>
-        <input class="form-input" type="text" id="post-content" name="post-content" />
+        <button class="btn btn-primary" type="submit" id="comment-button">Post</button>
       </div>
-      <div class="form-group">
-        <button id="update-post" type="submit" class="btn btn-primary">Update Post</button>
-        <button id="delete-post" type="submit" class="btn btn-primary">Delete</button>
-      </div>
-    </form>
-  </div>
-  </div>
+</form>
 
   <script src="/js/dashboard.js"></script>

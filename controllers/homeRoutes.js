@@ -68,6 +68,26 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 });
 
+// Route to edit specific post
+router.get('/dashboard/:id', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id, {
+            attributes: { exclude: ['password'] },
+            include: [{ model: User }],
+        });
+
+        const post = postData.get({ plain: true });
+        console.log(post)
+
+        res.render('viewPost', {
+            ...post,
+            logged_in: true
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 // Route for login 
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
@@ -85,7 +105,7 @@ router.get('/signup', (req, res) => {
 
 // Route for logout
 router.get('/logout', (req, res) => {
-    res.render('/')
+    res.render('homepage')
 });
 
 // Route for new post

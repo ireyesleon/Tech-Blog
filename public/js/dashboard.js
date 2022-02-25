@@ -22,7 +22,7 @@ const newFormHandler = async (event) => {
     }
 };
 
-//Function to update post, check in tutoring
+//Function to update post
 const updatePostHandler = async (event) => {
     event.preventDefault();
 
@@ -30,7 +30,7 @@ const updatePostHandler = async (event) => {
     const content = document.querySelector('#post-content').value.trim();
 
     if (title && content) {
-        const response = await fetch(`/api/post/${id}`, {
+        const response = await fetch(`/api/posts/`, {
             method: 'PUT',
             body: JSON.stringify({ title, content }),
             headers: {
@@ -52,12 +52,12 @@ const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
 
-        const response = await fetch(`/api/post/${id}`, {
+        const response = await fetch(`/api/dashboard/${id}`, {
             method: 'DELETE',
         });
 
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/dashboard');
         } else {
             alert('Failed to delete post');
         }
@@ -89,6 +89,6 @@ const newCommentHandler = async (event) => {
 };
 
 document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
-// document.querySelector('#delete-post').addEventListener('click', delButtonHandler);
-// document.querySelector('.edit-post-form').addEventListener('submit', updatePostHandler);
+document.querySelector('#delete-button').addEventListener('click', delButtonHandler);
+document.querySelector('.edit-post-form').addEventListener('submit', updatePostHandler);
 // document.querySelector('.comment-form').addEventListener('submit', newCommentHandler);

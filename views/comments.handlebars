@@ -1,0 +1,9 @@
+{{#each comments as |comment|}}
+    <div class="row">
+      <div class="col-12 border rounded-3 border-5 p-0 border-dark m-2">
+      <div class="d-flex justify-content-between p-2">
+        <h4>{{comment.content}}</h4><h6 class="author"> Posted by {{comment.user.username}} on {{format_date comment.creation_date}}</h6>
+        </div>
+        </div>
+    </div>
+{{/each}}

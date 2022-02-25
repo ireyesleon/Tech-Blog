@@ -114,23 +114,23 @@ router.get('/newPost', (req, res) => {
 });
 
 // Route to add new comment
-// router.get('/comments/:id', withAuth, async (req, res) => {
-//     try {
-//         const commentData = await Comment.findByPk(req.params.id, {
-//             attributes: { exclude: ['password'] },
-//             include: [{ model: User, Post }],
-//         });
+router.get('/comments/:id', withAuth, async (req, res) => {
+    try {
+        const commentData = await Comment.findByPk(req.params.id, {
+            attributes: { exclude: ['password'] },
+            include: [{ model: User, Post }],
+        });
 
-//         const comment = commentData.get({ plain: true });
+        const comment = commentData.get({ plain: true });
 
-//         res.render('post', {
-//             ...comment,
-//             logged_in: req.session.logged_in,
-//             user_id: req.session.user_id
-//         });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+        res.render('comment', {
+            ...comment,
+            logged_in: req.session.logged_in,
+            user_id: req.session.user_id
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;

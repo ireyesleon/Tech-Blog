@@ -68,28 +68,30 @@ const delButtonHandler = async (event) => {
 };
 
 // Function to add a comment to a Post
-const newCommentHandler = async (event) => {
-    event.preventDefault();
+// const newCommentHandler = async (event) => {
+//     event.preventDefault();
+//     if (event.target.hasAttribute('data-id')) {
+//         const id = event.target.getAttribute('data-id');
 
-    const comment = document.querySelector('#add-comment').value.trim();
-    console.log(comment)
+//     const comment = document.querySelector('#add-comment').value.trim();
     
-    if (comment) {
-        const response = await fetch(`api/posts/:id`, {
-            method: 'POST',
-            body: JSON.stringify({ comment }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+//     if (comment) {
+//         const response = await fetch(`api/comments/${id}`, {
+//             method: 'POST',
+//             body: JSON.stringify({ comment }),
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//         });
 
-        if (response.ok) {
-            document.location.replace('/dashboard');
-        } else {
-            alert('Failed to create new post');
-        }
-    }
-};
+//         if (response.ok) {
+//             window.location = document.referrer
+//         } else {
+//             alert('Failed to add comment');
+//         }
+//     }
+// }
+// };
 
 document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
 document.querySelector('#delete-button').addEventListener('click', delButtonHandler);

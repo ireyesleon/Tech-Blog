@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../models');
+const { Post, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 
@@ -112,5 +112,25 @@ router.get('/logout', (req, res) => {
 router.get('/newPost', (req, res) => {
     res.render('newPost')
 });
+
+// Route to add new comment
+// router.get('/comments/:id', withAuth, async (req, res) => {
+//     try {
+//         const commentData = await Comment.findByPk(req.params.id, {
+//             attributes: { exclude: ['password'] },
+//             include: [{ model: User, Post }],
+//         });
+
+//         const comment = commentData.get({ plain: true });
+
+//         res.render('post', {
+//             ...comment,
+//             logged_in: req.session.logged_in,
+//             user_id: req.session.user_id
+//         });
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 module.exports = router;

@@ -77,11 +77,11 @@ router.get('/dashboard/:id', withAuth, async (req, res) => {
         });
 
         const post = postData.get({ plain: true });
-        console.log(post)
 
         res.render('viewPost', {
             ...post,
-            logged_in: true
+            logged_in: req.session.logged_in,
+            user_id: req.session.user_id
         });
     } catch (err) {
         res.status(500).json(err);

@@ -18,13 +18,17 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 // Route to update an specific post
-router.put('/posts/:id', withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
-        const postData = await Post.update(req.body, {
+        const postData = await Post.update({
+            title: req.body.content,
+            content: req.body.title
+        },  
+            {
             where: {
                 id: req.params.id
-            }
-        })
+            },
+        });
 
         if (!postData) {
             res.status(404).json({ message: 'No post was found'});

@@ -2,20 +2,21 @@
   <div>
     <h3>Update post:</h3>
 
-    <form class="form update-post-form">
+    <form class="form update-post-form" data-id="{{id}}">
       <div class="form-group">
         <label for="post-title">Title:</label>
-        <textarea class="form-input col-12" id="post-title" name="post-title"/>{{post.title}}</textarea>
+        <textarea class="form-input col-12" id="post-title" name="post-title"/>{{title}}</textarea>
       </div>
       <div class="form-group">
         <label for="post-content">Content:</label>
-        <textarea class="form-input col-12" id="post-content" name="post-content"/>{{post.content}}</textarea>
+        <textarea class="form-input col-12" id="post-content" name="post-content"/>{{content}}</textarea>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary" id="create-button">Update</button>
-        <button type="submit" class="btn btn-primary" id="delete-button">Delete</button>
+        <button type="submit" class="btn btn-primary" id="update-button">Update</button>
       </div>
     </form>
+    <button class="btn btn-primary" id="delete-button" data-id="{{id}}">Delete</button>
+
   </div>
   </div>
 
